@@ -3,4 +3,5 @@ require 'json'
 require 'pry'
 require 'dotenv/load'
 
-#require_relative ' '
+require_relative '../lib/api'
+
