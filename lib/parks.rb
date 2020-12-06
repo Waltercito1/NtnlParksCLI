@@ -1,18 +1,18 @@
 require_relative '../config/environment'
 
 class Parks
-    attr_accessor :name, :state, :description, :directionsInfo
+    #attr_accessor :name, :state, :description, :directionsInfo
 
     @@all = []
 
-    def initialize (name, state, description, directionsInfo)
-        @name = name
-        @state  = state
-        @description = description
-        @directionsInfo = directionsInfo
-        @@all << self
-        #binding.pry
-    end
+    def initialize(attributes)
+        attributes.each do |key, value| 
+          self.class.attr_accessor(key)
+          self.send(("#{key}="), value)
+          @@all << self
+        end
+        binding.pry
+      end
 
     def self.all
         @@all
