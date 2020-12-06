@@ -21,6 +21,7 @@ class API
                 attributes[:op_hrs_desc] = oh.dig("description")
             end
             Parks.new(attributes)
+            #binding.pry
         end
     end
 end
