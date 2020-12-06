@@ -34,6 +34,7 @@ class CLI
             case input
             when "1"
                 Parks.list_parks
+                Parks.park_more_info
             when "2"
                 load_parks_data
             end

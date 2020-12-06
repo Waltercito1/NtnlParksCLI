@@ -8,7 +8,6 @@ class Parks
         attributes.each do |key, value| 
           self.class.attr_accessor(key)
           self.send(("#{key}="), value)
-          #@@all << self
         end
         @@all << self
     end
@@ -39,7 +38,6 @@ class Parks
                 index = gets.strip
             end
         end
-
     end
     
 end
