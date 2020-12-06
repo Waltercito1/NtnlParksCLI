@@ -1,7 +1,6 @@
 require_relative '../config/environment'
 
 class Parks
-    #attr_accessor :name, :state, :description, :directionsInfo
 
     @@all = []
 
@@ -18,15 +17,6 @@ class Parks
         @@all
     end
     
-    # def self.create_all(array)
-    # binding.pry
-    #     array.each do |park|
-    #         park.each do |data|
-    #             self.new(data["fullName"], data["states"], data["description"])
-    #         end
-    #         @@all << self
-    #     end
-    # end
-    # binding.pry
+    
 
 end
