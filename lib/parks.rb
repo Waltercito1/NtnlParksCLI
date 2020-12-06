@@ -10,8 +10,7 @@ class Parks
           self.send(("#{key}="), value)
           @@all << self
         end
-        #@@all << self
-        binding.pry
+        #binding.pry
         puts name
         #list_parks
     end
