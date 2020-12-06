@@ -10,9 +10,6 @@ class Parks
           self.send(("#{key}="), value)
           @@all << self
         end
-        #binding.pry
-        puts name
-        #list_parks
     end
 
     def self.all
@@ -24,7 +21,7 @@ class Parks
     end
     
     def self.list_parks
-        self.all.sort{|a,b| a.name <=> b.name}.each.with_index(1) do |name, index|
+        self.all.each.with_index(1) do |name, index|
             puts "#{index}. #{name}"
         end
     end

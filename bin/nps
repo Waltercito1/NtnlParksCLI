@@ -2,4 +2,5 @@
 
 require_relative "../config/environment"
 
-API.new.get_data
+#API.new.get_data
+CLI.new.run
