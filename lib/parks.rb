@@ -28,18 +28,6 @@ class Parks
         #binding.pry
     end
 
-    def park_more_info
-        puts "Please enter the index number or type 'exit'."
-        index = gets.strip
-        while !("1"..self.all.length.to_s).include?(index)
-            if index == "exit"
-                return greeting
-            else
-                puts "Please enter a valid index number or type 'exit'"
-                index = gets.strip
-            end
-        end
-
-    end
+    
     
 end
