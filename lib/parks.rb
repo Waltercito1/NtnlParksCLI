@@ -10,6 +10,7 @@ class Parks
         @state  = state
         @description = description
         @@all << self
+        binding.pry
     end
 
     def self.all

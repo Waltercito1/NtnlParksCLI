@@ -11,20 +11,28 @@ class API
         array = JSON.parse(response.body)["data"]
         #binding.pry
         #Parks.create_all(array)
-        array.each do |park|
-        #binding.pry
-            park.each do |data|
-                name = data.dig("fullName")
-                binding.pry                
-                state = data["states"]
-                description = data["description"]
+        #array.each do |park|
+            array.each do |park|
+        #binding.pry        
+                name = park.dig("fullName")
+                state = park.dig("states")
+                description = park.dig("description")
                 Parks.new(name, state, description)
-                #Parks.new(data["fullName"], data["states"], data["description"])
-        #binding.pry
+                #binding.pry        
             end
         #binding.pry
-            #@@all << self
-        end
+        #     park.each do |data|
+        #         name = data.dig("fullName")
+        #         binding.pry                
+        #         state = data["states"]
+        #         description = data["description"]
+        #         Parks.new(name, state, description)
+        #         #Parks.new(data["fullName"], data["states"], data["description"])
+        # #binding.pry
+        #     end
+        # #binding.pry
+        #     #@@all << self
+        # end
     end
 
     # parks = GetParkData.new.get_data
