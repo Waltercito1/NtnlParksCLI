@@ -15,17 +15,15 @@ class API
             attributes[:state] = park.dig("states")
             attributes[:description] = park.dig("description")
             attributes[:directionsInfo] = park.dig("directionsInfo")
-            #binding.pry       
-        end
-
-        array.each do |park|
+            #binding.pry
             op_hrs = park.dig("operatingHours")
             op_hrs.each do |oh|
                 op_hrs_desc = oh.dig("description")
                 attributes[:op_hrs_desc] = oh.dig("description")
-                #binding.pry
             end
         end
+        binding.pry
         Parks.new(attributes)
     end
+    #Parks.new(attributes)
 end
