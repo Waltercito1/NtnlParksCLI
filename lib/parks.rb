@@ -19,7 +19,7 @@ class Parks
     def self.list_parks
         all_parks = []
         self.all.each_with_index do |park, index| 
-            all_parks << "#{index+1}. #{park.name}"
+            all_parks << "#{index+1}.".colorize(:red) + "#{park.name}".colorize(:green)
         end
         puts all_parks
         #binding.pry
@@ -53,9 +53,9 @@ class Parks
     def self.additional_info(usr_index)
         self.all.each_with_index do |park, index|
             if index+1 == usr_index.to_i
-    #binding.pry
-                puts "#{park.name}, #{park.state}"
-                puts "Description:\n#{park.description}" 
+                puts "#{park.name}, #{park.state}".colorize(:green)
+                puts "Description:".colorize(:red)
+                puts park.description 
             end
         end
     #binding.pry

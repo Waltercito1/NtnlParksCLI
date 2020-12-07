@@ -12,7 +12,7 @@ class CLI
     end
 
     def greeting
-        puts "\nWelcome to the National Parks Servive CLI!"
+        puts "\nWelcome to the National Parks Servive CLI!".colorize(:red)
         puts "******************************************"
     end
 
@@ -44,8 +44,8 @@ class CLI
     end
 
     def thank_you
-        puts "\nI hope you enjoyed using the National Parks Servive CLI."
-        puts "Thank you!"
+        puts "\nI hope you enjoyed using the National Parks Servive CLI.".colorize(:yellow)
+        puts "Thank you!".colorize(:yellow)
         exit
     end
 
