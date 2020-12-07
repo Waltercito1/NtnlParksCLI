@@ -1,6 +1,7 @@
 require_relative '../config/environment'
 
 class Parks
+        include Paramable
     
     @@all = []
 
@@ -44,6 +45,14 @@ class Parks
     def self.parks_by_state
         puts "Please enter the state abbreviation " + "(ie: ME for Maine)".colorize(:green) + " or type 'exit'."
         abbrev = gets.strip
+        # while !("1"..self.all.length.to_s).include?(abbrev)
+        #     if abbrev == "exit"
+        #         exit
+        #     else
+        #         puts "Please enter a valid abbreviation or type 'exit'"
+        #         abbrev = gets.strip
+        #     end
+        # end
         self.all.each_with_index do |park, index| 
             puts "#{index+1}. ".colorize(:red) + "#{park.name}".colorize(:green) if park.state.include?(abbrev.upcase)
         end
@@ -61,6 +70,7 @@ class Parks
                 puts park.directionsInfo
                 puts "\nHours of Operation:".colorize(:red)
                 puts park.op_hrs_desc
+                sleep 2
             end
         end
     end
