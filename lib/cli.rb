@@ -29,7 +29,7 @@ class CLI
                 sleep 0.5
             puts " - To quit, type 'exit'." 
                 sleep 0.5
-            puts "Please type your selection and press ENTER"
+            puts "\nPlease type your selection and press ENTER"
 
             input = gets.strip
     #binding.pry
@@ -40,6 +40,13 @@ class CLI
                 Parks.parks_by_state
             end
         end
+        thank_you
+    end
+
+    def thank_you
+        puts "\nI hope you enjoyed using the National Parks Servive CLI."
+        puts "Thank you!"
+        exit
     end
 
 end
