@@ -1,3 +1,5 @@
+require_relative '../config/environment'
+
 class CLI
     def run
         greeting
@@ -34,9 +36,8 @@ class CLI
             case input
             when "1"
                 Parks.list_parks
-                Parks.park_more_info
             when "2"
-                load_parks_data
+                Parks.parks_by_state
             end
         end
     end
