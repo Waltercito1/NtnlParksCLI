@@ -20,7 +20,7 @@ class CLI
 
         input = nil
 
-        while input != "exit" && input !="3"
+        while input != "exit" && input != "3"
             puts "\nWhat would you like to do today?"
                 sleep 0.5
             puts " - To list all US National Parks, enter '1'." 

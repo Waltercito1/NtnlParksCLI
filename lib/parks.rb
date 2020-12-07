@@ -52,15 +52,17 @@ class Parks
 
     def self.additional_info(usr_index)
         self.all.each_with_index do |park, index|
+            #binding.pry
             if index+1 == usr_index.to_i
                 puts "#{park.name}, #{park.state}".colorize(:green)
                 puts "Description:".colorize(:red)
                 puts park.description
-                puts "\nGetting there:".colorize(:red)
+                puts "\nGetting There:".colorize(:red)
                 puts park.directionsInfo
+                puts "\nHours of Operation:".colorize(:red)
+                puts park.op_hrs_desc
             end
         end
-    #binding.pry
     end
 
 end
