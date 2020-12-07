@@ -42,10 +42,10 @@ class Parks
     end
 
     def self.parks_by_state
-        puts "Please enter the state abbreviation or type 'exit'."
+        puts "Please enter the state abbreviation " + "(ie: ME for Maine)".colorize(:green) + " or type 'exit'."
         abbrev = gets.strip
         self.all.each_with_index do |park, index| 
-            puts "#{index+1}. #{park.name}" if park.state.include?(abbrev.upcase)
+            puts "#{index+1}. ".colorize(:red) + "#{park.name}".colorize(:green) if park.state.include?(abbrev.upcase)
         end
         park_more_info
     end
@@ -55,7 +55,9 @@ class Parks
             if index+1 == usr_index.to_i
                 puts "#{park.name}, #{park.state}".colorize(:green)
                 puts "Description:".colorize(:red)
-                puts park.description 
+                puts park.description
+                puts "\nGetting there:".colorize(:red)
+                puts park.directionsInfo
             end
         end
     #binding.pry
