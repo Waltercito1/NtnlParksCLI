@@ -23,12 +23,9 @@ class CLI
         puts "\nMain menu:".red.bold
         puts "What would you like to do?".green
             sleep 0.5
-        puts " - To list all US National Parks, enter '1'." 
-            sleep 0.5            
+        puts " - To list all US National Parks, enter '1'."   
         puts " - To list all US National Parks in a given state, enter '2'." 
-            sleep 0.5
         puts " - To quit, type 'Q'." 
-            sleep 0.5
         puts "\nPlease type your selection and press ENTER".green
     
         until ["1", "2", "q", "Q"].include?(user_input = gets.strip)
@@ -47,26 +44,16 @@ class CLI
 
     def what_next
         puts "\nWhat would you like to do next?".green
-            sleep 0.5
-        puts " - To list all US National Parks, enter '1'." 
-            sleep 0.5            
-        puts " - To list all US National Parks in a given state, enter '2'." 
-            sleep 0.5
-        puts " - To return to the main menu, type '3'." 
-            sleep 0.5
-        puts " - To quit, type 'Q'." 
-            sleep 0.5
+        puts " - To return to the main menu, type '1'." 
+        puts " - To quit, type 'Q'."
         puts "\nPlease type your selection and press ENTER".green
-    
-        until ["1", "2", "3," "q", "Q"].include?(user_input = gets.strip)
+        
+        user_input = ""    
+        until ["1", "q", "Q"].include?(user_input = gets.strip)
             puts "Please enter a valid input:"
         end
-        case user_input.downcase
+        case user_input
         when "1"
-            Parks.list_parks
-        when "2"
-            Parks.parks_by_state
-        when "3"
             menu
         when "q"
             thank_you

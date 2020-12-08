@@ -1,6 +1,6 @@
 require_relative '../config/environment'
 
-class Parks
+class Parks < CLI
         include Paramable
     
     @@all = []
@@ -26,7 +26,7 @@ class Parks
         puts "\nListig all US National Parks, 25 at the time and in alphabetical order:"
         puts all_parks[0..24]
         puts "Press ENTER to load more"
-        
+
         #binding.pry
         park_more_info
     end
@@ -37,8 +37,8 @@ class Parks
         usr_index = gets.strip
         while !("1"..self.all.length.to_s).include?(usr_index)
             if usr_index == "exit"
-                exit
-                #CLI.menu
+                #exit
+                menu
             else
                 puts "Please enter a valid index number or type 'exit'"
                 usr_index = gets.strip
@@ -78,8 +78,8 @@ class Parks
                 puts "\nHours of Operation:".colorize(:red)
                 puts park.op_hrs_desc
                 sleep 2
-                #CLI.what_next
-                park_more_info
+                CLI.new.what_next
+                #park_more_info
             end
         end
     end
