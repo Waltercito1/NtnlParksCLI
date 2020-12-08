@@ -22,8 +22,11 @@ class Parks
         self.all.each_with_index do |park, index| 
             all_parks << "#{index+1}.".colorize(:red) + "#{park.name}".colorize(:green)
         end
-        puts "Listig all US National Parks, 25 at the time and in alphabetical order:"
-        puts all_parks
+        message_2
+        puts "\nListig all US National Parks, 25 at the time and in alphabetical order:"
+        puts all_parks[0..24]
+        puts "Press ENTER to load more"
+        
         #binding.pry
         park_more_info
     end
@@ -34,7 +37,8 @@ class Parks
         usr_index = gets.strip
         while !("1"..self.all.length.to_s).include?(usr_index)
             if usr_index == "exit"
-                CLI.menu
+                exit
+                #CLI.menu
             else
                 puts "Please enter a valid index number or type 'exit'"
                 usr_index = gets.strip
@@ -75,8 +79,15 @@ class Parks
                 puts park.op_hrs_desc
                 sleep 2
                 #CLI.what_next
+                park_more_info
             end
         end
+    end
+
+    def self.message_2
+        puts "The U.S. is home to an astonishing 421 national parks,"
+        puts "monuments and nationally protected lands comprising the "
+        puts "vast National Park Service (NPS) system.\n"
     end
 end
     
