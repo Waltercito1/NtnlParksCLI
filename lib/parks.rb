@@ -53,7 +53,7 @@ class Parks < CLI
     end
 
     def self.valid_input?(input)
-        input.upcase
+        #binding.pry
         if input.length == 2 && states_abbrev.include?(input)
             return true
         else
@@ -65,8 +65,10 @@ class Parks < CLI
         puts "Please enter a state abbreviation " + "(ie: ME for Maine)".colorize(:green) + " or type 'exit'."
         abbrev = gets.strip
 
-        while !(valid_input?(abbrev))
-            puts "please try again"
+        while !(valid_input?(abbrev.upcase))
+            puts "In all, 28 states have National parks (29 if you include Idaho, which" 
+            puts "has a small part of Yellowstone.), but " + "'#{abbrev}'".red + " is not one of them"
+            puts "please try again:"
             abbrev = gets.strip
         end
         print_w_index(abbrev)
