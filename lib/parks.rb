@@ -22,6 +22,7 @@ class Parks
         self.all.each_with_index do |park, index| 
             all_parks << "#{index+1}.".colorize(:red) + "#{park.name}".colorize(:green)
         end
+        puts "Listig all US National Parks, 25 at the time and in alphabetical order:"
         puts all_parks
         #binding.pry
         park_more_info
@@ -33,17 +34,18 @@ class Parks
         usr_index = gets.strip
         while !("1"..self.all.length.to_s).include?(usr_index)
             if usr_index == "exit"
-                exit
+                CLI.menu
             else
                 puts "Please enter a valid index number or type 'exit'"
                 usr_index = gets.strip
             end
         end
+        #if usr_index == 
         additional_info(usr_index)
     end
 
     def self.parks_by_state
-        puts "Please enter the state abbreviation " + "(ie: ME for Maine)".colorize(:green) + " or type 'exit'."
+        puts "Please enter a state abbreviation " + "(ie: ME for Maine)".colorize(:green) + " or type 'exit'."
         abbrev = gets.strip
         # while !("1"..self.all.length.to_s).include?(abbrev)
         #     if abbrev == "exit"
@@ -53,9 +55,10 @@ class Parks
         #         abbrev = gets.strip
         #     end
         # end
-        self.all.each_with_index do |park, index| 
-            puts "#{index+1}. ".colorize(:red) + "#{park.name}".colorize(:green) if park.state.include?(abbrev.upcase)
-        end
+        #self.all.to_enum.with_index(1).each do |park, index|
+        self.all.each_with_index do |park, index|
+                puts "#{index+1}. ".colorize(:red) + "#{park.name}".colorize(:green) if park.state.include?(abbrev.upcase)
+            end
         park_more_info
     end
 
@@ -74,6 +77,5 @@ class Parks
             end
         end
     end
-
 end
     

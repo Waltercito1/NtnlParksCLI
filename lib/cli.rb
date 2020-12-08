@@ -12,40 +12,77 @@ class CLI
     end
 
     def greeting
-        puts "\nWelcome to the National Parks Servive CLI!".colorize(:red)
+        puts "\nWelcome to the National Parks Servive CLI!".red.bold
         puts "******************************************"
+        puts "The United States National Parks have been called 'America's Best Idea'"
+        puts "and I can't really argue with that!"
+        #puts "\nWhat would you like to do today?"
     end
 
     def menu
-
-        input = nil
-
-        while input != "exit" && input != "3"
-            puts "\nWhat would you like to do today?"
-                sleep 0.5
-            puts " - To list all US National Parks, enter '1'." 
-                sleep 0.5            
-            puts " - To list all US National Parks in a given state, enter '2'." 
-                sleep 0.5
-            puts " - To quit, type '3' or 'exit'." 
-                sleep 0.5
-            puts "\nPlease type your selection and press ENTER"
-
-            input = gets.strip
-    #binding.pry
-            case input
-            when "1"
-                Parks.list_parks
-            when "2"
-                Parks.parks_by_state
-            end
+        puts "\nMain menu:".red.bold
+        puts "What would you like to do?".green
+            sleep 0.5
+        puts " - To list all US National Parks, enter '1'." 
+            sleep 0.5            
+        puts " - To list all US National Parks in a given state, enter '2'." 
+            sleep 0.5
+        puts " - To quit, type 'Q'." 
+            sleep 0.5
+        puts "\nPlease type your selection and press ENTER".green
+    
+        until ["1", "2", "q", "Q"].include?(user_input = gets.strip)
+            puts "Please enter a valid input:"
         end
-        thank_you
+        case user_input.downcase
+        when "1"
+            Parks.list_parks
+        when "2"
+            Parks.parks_by_state
+        when "q"
+            thank_you
+        end
+        
+    end
+
+    def what_next
+        puts "\nWhat would you like to do next?".green
+            sleep 0.5
+        puts " - To list all US National Parks, enter '1'." 
+            sleep 0.5            
+        puts " - To list all US National Parks in a given state, enter '2'." 
+            sleep 0.5
+        puts " - To return to the main menu, type '3'." 
+            sleep 0.5
+        puts " - To quit, type 'Q'." 
+            sleep 0.5
+        puts "\nPlease type your selection and press ENTER".green
+    
+        until ["1", "2", "3," "q", "Q"].include?(user_input = gets.strip)
+            puts "Please enter a valid input:"
+        end
+        case user_input.downcase
+        when "1"
+            Parks.list_parks
+        when "2"
+            Parks.parks_by_state
+        when "3"
+            menu
+        when "q"
+            thank_you
+        end
+        
+    end
+
+    def message_1
+        puts "The U.S. is home to an astonishing 421 national parks,"
+        puts " monuments and nationally protected lands comprising the "
+        puts "vast National Park Service (NPS) system.\n"
     end
 
     def thank_you
-        puts "\nI hope you enjoyed using the National Parks Servive CLI.".colorize(:yellow)
-        puts "Thank you!".colorize(:yellow)
+        puts "\nI hope you enjoyed using the National Parks Servive CLI.".yellow.bold
+        puts "Thank you!".yellow.bold
         exit
     end
 

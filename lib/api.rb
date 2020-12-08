@@ -1,7 +1,8 @@
 require_relative '../config/environment'
 
 class API
-    BASE_URL = "https://developer.nps.gov/api/v1/parks?api_key="
+    BASE_URL = "https://developer.nps.gov/api/v1/parks?limit=497&api_key="   ## all parks 497
+    #BASE_URL = "https://developer.nps.gov/api/v1/parks?api_key="    ##Default limit of 50 parks
     KEY = "#{ENV['API_KEY']}"
 
     def get_data
