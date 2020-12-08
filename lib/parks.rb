@@ -38,13 +38,12 @@ class Parks < CLI
         while !("1"..self.all.length.to_s).include?(usr_index)
             if usr_index == "exit"
                 #exit
-                menu
+                CLI.new.menu
             else
                 puts "Please enter a valid index number or type 'exit'"
                 usr_index = gets.strip
             end
         end
-        #if usr_index == 
         additional_info(usr_index)
     end
 
