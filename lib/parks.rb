@@ -74,6 +74,7 @@ class Parks
                 puts "\nHours of Operation:".colorize(:red)
                 puts park.op_hrs_desc
                 sleep 2
+                #CLI.what_next
             end
         end
     end
