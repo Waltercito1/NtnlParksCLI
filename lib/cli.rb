@@ -47,8 +47,7 @@ class CLI
         puts " - To return to the main menu, type '1'." 
         puts " - To quit, type 'Q'."
         puts "\nPlease type your selection and press ENTER".green
-        
-        user_input = ""    
+            
         until ["1", "q", "Q"].include?(user_input = gets.strip)
             puts "Please enter a valid input:"
         end
@@ -59,12 +58,6 @@ class CLI
             thank_you
         end
         
-    end
-
-    def message_1
-        puts "The U.S. is home to an astonishing 421 national parks,"
-        puts " monuments and nationally protected lands comprising the "
-        puts "vast National Park Service (NPS) system.\n"
     end
 
     def thank_you

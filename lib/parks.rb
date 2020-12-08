@@ -2,6 +2,7 @@ require_relative '../config/environment'
 
 class Parks < CLI
         include Paramable
+       # attr_accessor :states_abbrev
     
     @@all = []
 
@@ -17,6 +18,10 @@ class Parks < CLI
         @@all
     end
 
+    def self.states_abbrev
+        self.all.collect {|p| p.state}      
+    end
+
     def self.list_parks
         all_parks = []
         self.all.each_with_index do |park, index| 
@@ -25,15 +30,15 @@ class Parks < CLI
         message_2
         puts "\nListig all US National Parks, 25 at the time and in alphabetical order:"
         puts all_parks[0..24]
-        puts "Press ENTER to load more"
+        puts "Press ENTER to load more or..."
 
         #binding.pry
         park_more_info
     end
     
     def self.park_more_info
-        puts "\nPlease enter the index number of the park to find out more"
-        puts "information about it, or type 'exit' to return to the menu."
+        puts "\nEnter the index number of the park to find out more"
+        puts "information about it. Type 'exit' to return to the menu."
         usr_index = gets.strip
         while !("1"..self.all.length.to_s).include?(usr_index)
             if usr_index == "exit"
@@ -47,22 +52,31 @@ class Parks < CLI
         additional_info(usr_index)
     end
 
+    def self.valid_input?(input)
+        input.upcase
+        if input.length == 2 && states_abbrev.include?(input)
+            return true
+        else
+            return false
+        end
+    end 
+
     def self.parks_by_state
         puts "Please enter a state abbreviation " + "(ie: ME for Maine)".colorize(:green) + " or type 'exit'."
         abbrev = gets.strip
-        # while !("1"..self.all.length.to_s).include?(abbrev)
-        #     if abbrev == "exit"
-        #         exit
-        #     else
-        #         puts "Please enter a valid abbreviation or type 'exit'"
-        #         abbrev = gets.strip
-        #     end
-        # end
-        #self.all.to_enum.with_index(1).each do |park, index|
-        self.all.each_with_index do |park, index|
-                puts "#{index+1}. ".colorize(:red) + "#{park.name}".colorize(:green) if park.state.include?(abbrev.upcase)
-            end
+
+        while !(valid_input?(abbrev))
+            puts "please try again"
+            abbrev = gets.strip
+        end
+        print_w_index(abbrev)
         park_more_info
+    end
+
+    def self.print_w_index(abbrev)
+        self.all.each_with_index do |park, index|
+            puts "#{index+1}. ".colorize(:red) + "#{park.name}".colorize(:green) if park.state.include?(abbrev.upcase)
+        end
     end
 
     def self.additional_info(usr_index)
