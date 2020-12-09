@@ -17,7 +17,6 @@ class CLI
         puts "******************************************"
         puts "The United States National Parks have been called 'America's Best Idea'"
         puts "and I can't really argue with that!"
-        #puts "\nWhat would you like to do today?"
     end
 
     def menu
@@ -137,5 +136,4 @@ class CLI
         puts "Thank you!".yellow.bold
         exit
     end
-
 end
