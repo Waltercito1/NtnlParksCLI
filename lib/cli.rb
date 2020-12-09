@@ -17,6 +17,7 @@ class CLI
         puts "******************************************"
         puts "The United States National Parks have been called 'America's Best Idea'"
         puts "and I can't really argue with that!"
+        puts "\nLoading parks' data..."
     end
 
     def menu
