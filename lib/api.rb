@@ -11,16 +11,22 @@ class API
         response = Net::HTTP.get_response(uri)
 
         array = JSON.parse(response.body)["data"]
-        array.each do |park|   
-            attributes[:name] = park.dig("fullName")
-            attributes[:state] = park.dig("states")
-            attributes[:description] = park.dig("description")
-            attributes[:directionsInfo] = park.dig("directionsInfo")
+        array.each do |park|
+            binding.pry
+            attributes = {name: park["fullName"], 
+                          state: park["states"], 
+                          description: park["description"],
+                          directionsInfo: park["directionsInfo"]}#,
+                          #op_hrs: park["operatingHours"]} 
+            #attributes[:name] = park.dig("fullName")
+            #attributes[:state] = park.dig("states")
+            #attributes[:description] = park.dig("description")
+            #attributes[:directionsInfo] = park.dig("directionsInfo")
             op_hrs = park.dig("operatingHours")
             op_hrs.each do |oh|
                 op_hrs_desc = oh.dig("description")
                 attributes[:op_hrs_desc] = oh.dig("description")
-                #binding.pry
+                binding.pry
             end
             Parks.new(attributes)
             #binding.pry

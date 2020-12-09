@@ -112,7 +112,7 @@ class CLI
 
         while !(valid_input?(abbrev.upcase))
             puts "In all, 28 states have National parks (29 if you include Idaho, which" 
-            puts "has a small part of Yellowstone.), but " + "'#{abbrev}'".red + " is not one of them"
+            puts "has a small part of Yellowstone.), but " + "'#{abbrev}'".red.bold + " is not one of them"
             puts "please try again:"
             abbrev = gets.strip
         end
@@ -125,6 +125,14 @@ class CLI
             puts "#{index+1}. ".colorize(:red) + "#{park.name}".colorize(:green) if park.state.include?(abbrev.upcase)
         end
     end
+
+    def valid_input?(input)
+        if input.length == 2 && Parks.states_abbrev.include?(input)
+            return true
+        else
+            return false
+        end
+    end 
 
     def message_1
         puts "The U.S. is home to an astonishing 421 national parks,"
