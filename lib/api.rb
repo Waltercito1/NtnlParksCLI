@@ -20,6 +20,7 @@ class API
             op_hrs.each do |oh|
                 op_hrs_desc = oh.dig("description")
                 attributes[:op_hrs_desc] = oh.dig("description")
+                #binding.pry
             end
             Parks.new(attributes)
             #binding.pry
