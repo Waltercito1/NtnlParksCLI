@@ -89,9 +89,6 @@ class CLI
                 park_more_info(more_indexes)
             end
         end
-
-        #puts "Press 'c' to load more or..."
-        
         park_more_info
     end
 
