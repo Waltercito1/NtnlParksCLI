@@ -1,6 +1,12 @@
 require_relative '../config/environment'
 
 class CLI
+    attr_accessor :counter
+
+    def initialize
+        @counter = 0
+    end
+
     def run
         greeting
         load_parks_data
@@ -53,6 +59,7 @@ class CLI
         end
         case user_input
         when "1"
+            @counter = 0
             menu
         when "q"
             thank_you
@@ -64,31 +71,34 @@ class CLI
         Park.all.each_with_index do |park, index| 
             all_parks << "#{index+1}.".colorize(:red) + "#{park.name}".colorize(:green)
         end
-        message_1
+        us_parks_message
         puts "\nListig all US National Parks, 25 at the time and in alphabetical order:"
-        #puts all_parks[0..24]
-        puts all_parks[0..24]
-        continue_puts?
-        #puts "Press ENTER to load more or..."
-        puts all_parks[25..49]
+        puts all_parks[@counter..@counter+24]
+        load_more_message
 
-        #binding.pry
+        while counter <= Park.all.length 
+            more_indexes = gets.strip.downcase 
+            if more_indexes == "c"
+                @counter += 25
+                puts all_parks[@counter..@counter+24]
+                load_more_message  
+            elsif more_indexes == "exit"
+                @counter = 0
+                menu
+            else
+                park_more_info(more_indexes)
+            end
+        end
+
+        #puts "Press 'c' to load more or..."
+        
         park_more_info
     end
 
-    def continue_puts?                                                                                                            
-        print "press any key"                                                                                                    
-        gets
-        #STDIN.getch("x")                                                                                                              
-        #print "            \r" # extra space to overwrite in case next sentence is short                                                                                                              
-    end
-
-    def park_more_info
-        puts "\nEnter the index number of the park to find out more"
-        puts "information about it. Type 'exit' to return to the menu."
-        usr_index = gets.strip
+    def park_more_info(usr_index = nil)
         while !("1"..Park.all.length.to_s).include?(usr_index)
             if usr_index == "exit"
+                @counter = 0
                 menu
             else
                 puts "Please enter a valid index number or type 'exit'"
@@ -143,10 +153,20 @@ class CLI
         end
     end 
 
-    def message_1
+    def us_parks_message
         puts "The U.S. is home to an astonishing 421 national parks,"
         puts "monuments and nationally protected lands comprising the "
         puts "vast National Park Service (NPS) system.\n"
+    end
+
+    def choose_index_message
+        puts "\nEnter the index number of the park to find out more"
+        puts "information about it. Type 'exit' to return to the menu."
+    end
+
+    def load_more_message
+        puts "Type 'c' to load more OR Enter the index number of the park to find out more"
+        puts "Type 'exit' to return to the menu."
     end
 
     def thank_you
