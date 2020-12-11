@@ -12,3 +12,10 @@ $ bundle install
 Enter: 
 bin/nps in your terminal to run the program.
 
+And then execute:
+
+    $ bundle install
+
+
+
+## Usage
