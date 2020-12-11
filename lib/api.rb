@@ -6,7 +6,6 @@ class API
     KEY = "#{ENV['API_KEY']}"
 
     def get_data
-        attributes = {}
         uri = URI.parse(BASE_URL + KEY)
         response = Net::HTTP.get_response(uri)
 
@@ -16,14 +15,10 @@ class API
             state: park["states"], 
             description: park["description"],
             directionsInfo: park["directionsInfo"]}
-            #op_hrs_desc: park.dig("operatingHours")[0]["description"]}
-            #op_hrs_desc: park["operatingHours"][0]["description"]}
+            #op_hrs_desc: park.dig("operatingHours")[0]["description"]}   #does not work
+            #op_hrs_desc: park["operatingHours"][0]["description"]}       #does not work either
             #binding.pry
-            #op_hrs: park["operatingHours"]} 
-            #attributes[:name] = park.dig("fullName")
-            #attributes[:state] = park.dig("states")
-            #attributes[:description] = park.dig("description")
-            #attributes[:directionsInfo] = park.dig("directionsInfo")
+            
             op_hrs = park.dig("operatingHours")
             op_hrs.each do |oh|
                 op_hrs_desc = oh.dig("description")
