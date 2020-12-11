@@ -12,12 +12,14 @@ class API
 
         array = JSON.parse(response.body)["data"]
         array.each do |park|
-            binding.pry
             attributes = {name: park["fullName"], 
-                          state: park["states"], 
-                          description: park["description"],
-                          directionsInfo: park["directionsInfo"]}#,
-                          #op_hrs: park["operatingHours"]} 
+            state: park["states"], 
+            description: park["description"],
+            directionsInfo: park["directionsInfo"]}
+            #op_hrs_desc: park.dig("operatingHours")[0]["description"]}
+            #op_hrs_desc: park["operatingHours"][0]["description"]}
+            #binding.pry
+            #op_hrs: park["operatingHours"]} 
             #attributes[:name] = park.dig("fullName")
             #attributes[:state] = park.dig("states")
             #attributes[:description] = park.dig("description")
@@ -26,10 +28,9 @@ class API
             op_hrs.each do |oh|
                 op_hrs_desc = oh.dig("description")
                 attributes[:op_hrs_desc] = oh.dig("description")
-                binding.pry
             end
-            Parks.new(attributes)
             #binding.pry
+            Park.new(attributes)
         end
     end
 end

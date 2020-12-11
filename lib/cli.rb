@@ -5,7 +5,6 @@ class CLI
         greeting
         load_parks_data
         menu
-        list_parks
     end
 
     def load_parks_data
@@ -62,23 +61,33 @@ class CLI
 
     def list_parks
         all_parks = []
-        Parks.all.each_with_index do |park, index| 
+        Park.all.each_with_index do |park, index| 
             all_parks << "#{index+1}.".colorize(:red) + "#{park.name}".colorize(:green)
         end
         message_1
         puts "\nListig all US National Parks, 25 at the time and in alphabetical order:"
-        puts all_parks#[0..24]
-        puts "Press ENTER to load more or..."
+        #puts all_parks[0..24]
+        puts all_parks[0..24]
+        continue_puts?
+        #puts "Press ENTER to load more or..."
+        puts all_parks[25..49]
 
         #binding.pry
         park_more_info
+    end
+
+    def continue_puts?                                                                                                            
+        print "press any key"                                                                                                    
+        gets
+        #STDIN.getch("x")                                                                                                              
+        #print "            \r" # extra space to overwrite in case next sentence is short                                                                                                              
     end
 
     def park_more_info
         puts "\nEnter the index number of the park to find out more"
         puts "information about it. Type 'exit' to return to the menu."
         usr_index = gets.strip
-        while !("1"..Parks.all.length.to_s).include?(usr_index)
+        while !("1"..Park.all.length.to_s).include?(usr_index)
             if usr_index == "exit"
                 menu
             else
@@ -90,7 +99,7 @@ class CLI
     end
 
     def additional_info(usr_index)
-        Parks.all.each_with_index do |park, index|
+        Park.all.each_with_index do |park, index|
             if index+1 == usr_index.to_i
                 puts "#{park.name}, #{park.state}".colorize(:green)
                 puts "Description:".colorize(:red)
@@ -121,13 +130,13 @@ class CLI
     end
 
     def print_w_index(abbrev)
-        Parks.all.each_with_index do |park, index|
+        Park.all.each_with_index do |park, index|
             puts "#{index+1}. ".colorize(:red) + "#{park.name}".colorize(:green) if park.state.include?(abbrev.upcase)
         end
     end
 
     def valid_input?(input)
-        if input.length == 2 && Parks.states_abbrev.include?(input)
+        if input.length == 2 && Park.states_abbrev.include?(input)
             return true
         else
             return false
