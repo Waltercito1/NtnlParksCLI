@@ -19,7 +19,7 @@ class API
             #op_hrs_desc: park["operatingHours"][0]["description"]}       #does not work either
             #binding.pry
             
-            op_hrs = park.dig("operatingHours")
+            op_hrs = park.dig("operatingHours")         #Sometimes OH is nil
             op_hrs.each do |oh|
                 op_hrs_desc = oh.dig("description")
                 attributes[:op_hrs_desc] = oh.dig("description")

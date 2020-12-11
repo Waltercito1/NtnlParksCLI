@@ -165,7 +165,7 @@ class CLI
     end
 
     def load_more_message
-        puts "Type 'c' to load more OR Enter the index number of the park to find out more"
+        puts "Type 'c' to load more parks " + "OR ".yellow.bold + "Enter the index number of the park to find out more"
         puts "Type 'exit' to return to the menu."
     end
 

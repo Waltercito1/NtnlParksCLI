@@ -5,8 +5,8 @@ require 'dotenv/load'
 require 'colorize'
 #require 'io/console'
 
+require_relative '../lib/concerns/paramable'
 require_relative '../lib/api'
 require_relative '../lib/cli'
 require_relative '../lib/park'
-require_relative '../lib/concerns/paramable'
 
