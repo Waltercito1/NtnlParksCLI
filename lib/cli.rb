@@ -69,7 +69,7 @@ class CLI
     def list_parks
         all_parks = []
         Park.all.each_with_index do |park, index| 
-            all_parks << "#{index+1}.".colorize(:red) + "#{park.name}".colorize(:green)
+            all_parks << "#{index+1}.".red + "#{park.name}".green
         end
         us_parks_message
         puts "\nListig all US National Parks, 25 at the time and in alphabetical order:"
@@ -108,12 +108,12 @@ class CLI
     def additional_info(usr_index)
         Park.all.each_with_index do |park, index|
             if index+1 == usr_index.to_i
-                puts "#{park.name}, #{park.state}".colorize(:green)
-                puts "Description:".colorize(:red)
+                puts "#{park.name}, #{park.state}".green
+                puts "Description:".red
                 puts park.description
-                puts "\nGetting There:".colorize(:red)
+                puts "\nGetting There:".red
                 puts park.directionsInfo
-                puts "\nHours of Operation:".colorize(:red)
+                puts "\nHours of Operation:".red
                 puts park.op_hrs_desc
                 sleep 2
 
@@ -123,7 +123,7 @@ class CLI
     end
 
     def parks_by_state
-        puts "Please enter a state abbreviation " + "(ie: ME for Maine)".colorize(:green) + " or type 'exit'."
+        puts "Please enter a state abbreviation " + "(ie: ME for Maine)".green + " or type 'exit'."
         abbrev = gets.strip
 
         while !(valid_input?(abbrev.upcase))
@@ -138,7 +138,7 @@ class CLI
 
     def print_w_index(abbrev)
         Park.all.each_with_index do |park, index|
-            puts "#{index+1}. ".colorize(:red) + "#{park.name}".colorize(:green) if park.state.include?(abbrev.upcase)
+            puts "#{index+1}. ".red + "#{park.name}".green if park.state.include?(abbrev.upcase)
         end
     end
 
