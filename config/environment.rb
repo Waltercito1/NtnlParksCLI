@@ -3,7 +3,6 @@ require 'json'
 require 'pry'
 require 'dotenv/load'
 require 'colorize'
-#require 'io/console'
 
 require_relative '../lib/api'
 require_relative '../lib/cli'
