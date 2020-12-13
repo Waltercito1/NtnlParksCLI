@@ -11,6 +11,7 @@ class Park
         end
         @@all << self
     end
+    
     def self.all
         @@all
     end

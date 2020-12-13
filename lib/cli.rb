@@ -34,10 +34,10 @@ class CLI
         puts " - To quit, type 'Q'." 
         puts "\nPlease type your selection and press ENTER".green
     
-        until ["1", "2", "q", "Q"].include?(user_input = gets.strip)
+        until ["1", "2", "q"].include?(user_input = gets.strip.downcase)
             puts "Please enter a valid input:"
         end
-        case user_input.downcase
+        case user_input
         when "1"
             list_parks
         when "2"
@@ -54,7 +54,7 @@ class CLI
         puts " - To quit, type 'Q'."
         puts "\nPlease type your selection and press ENTER".green
             
-        until ["1", "q", "Q"].include?(user_input = gets.strip)
+        until ["1", "q"].include?(user_input = gets.strip.downcase)
             puts "Please enter a valid input:"
         end
         case user_input
